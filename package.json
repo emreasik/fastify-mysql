@@ -1,0 +1,20 @@
+{
+  "name": "fastify-mysql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "hmr": "nodemon server.js",
+    "nodemon": "npm run hmr",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^4.5.3",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.19"
+  }
+}
