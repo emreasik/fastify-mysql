@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const config = require('../config/constant.json');
 
 const pool = mysql.createPool({
@@ -10,9 +10,27 @@ const pool = mysql.createPool({
 });
 
 pool.getConnection((err) => {
-    if (err) { 
-        console.log('Error connecting to DB', err.stack);
+    if (err) {
+        console.log('Error while connecting to DB', err.stack);
         process.exit(1);
-    } 
-    console.log("connected to db");
-})
+    }
+    console.log("Connected to DB");
+});
+
+const executeQuery = (query, arrayParams) => {
+    return new Promise((resolve, reject) => {
+        try {
+            pool.query(query, arrayParams, (error, data) => {
+                if (error) {
+                    console.log("error occured in query");
+                    reject(error);
+                }
+                resolve(data);
+            })
+        } catch (error) {
+            reject(error);
+        }
+    })
+};
+
+module.exports = { executeQuery }

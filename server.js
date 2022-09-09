@@ -1,4 +1,7 @@
 const fastify = require('fastify')();
+const routes = require("./routes/product/productRouter");
+
+fastify.register(routes);
 
 const startServer = () => {
     try {
