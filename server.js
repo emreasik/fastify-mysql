@@ -1,7 +1,10 @@
 const fastify = require('fastify')();
 const routes = require("./routes/product/productRouter");
+const uploadRoutes = require("./routes/upload/uploadRouter");
 
 fastify.register(routes);
+fastify.register(uploadRoutes.Multer.contentParser);
+fastify.register(uploadRoutes.routes);
 
 const startServer = () => {
     try {

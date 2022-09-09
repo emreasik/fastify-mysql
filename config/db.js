@@ -25,6 +25,7 @@ const executeQuery = (query, arrayParams) => {
                     console.log("error occured in query");
                     reject(error);
                 }
+                console.log(data);
                 resolve(data);
             })
         } catch (error) {
